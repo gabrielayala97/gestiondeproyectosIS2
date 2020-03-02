@@ -1,0 +1,12 @@
+<title> Inicio de Sesion</title>
+<h2 align="center">Iniciar sesión</h2>
+<body style="background-color:MediumAquamarine;">
+<form method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Login</button>
+</form>
+
+<hr />
+<a href="/register">Registrar usuario</a>
+</body>

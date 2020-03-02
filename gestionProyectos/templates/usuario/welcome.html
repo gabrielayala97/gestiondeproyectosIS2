@@ -1,0 +1,14 @@
+<title>Bienvenido</title>
+<body style="background-color:MediumAquamarine;">
+
+<button type="submit">Modulo de Administracion</button>
+<button type="submit">Modulo de Desarrollo</button>
+<button type="submit">Modulo de Configuracion</button>
+<p>
+    Bienvenido <b>{{request.user.username}}</b>, 
+    esta página es exclusiva para usuarios registrados.
+</p>
+
+<hr />
+<a href="/logout">Cerrar sesión</a>
+</body>
