@@ -1,12 +1,18 @@
-<title> Inicio de Sesion</title>
-<h2 align="center">Iniciar sesión</h2>
-<body style="background-color:MediumAquamarine;">
-<form method="POST">
+{% extends 'base/base.html' %}
+{% block title %}
+Inicio de Sesion
+{% endblock %}
+{% block body %}
+<br>
+
+<h1 align="center">Iniciar sesión</h1>
+</br>
+<div align="center">
+<form align="center" method="POST">
     {{ form.as_p }}
     {% csrf_token %}
     <button type="submit">Login</button>
 </form>
-
-<hr />
-<a href="/register">Registrar usuario</a>
-</body>
+</div>
+<!--<div align="center"><a href="/register">Registrar usuario</a></div>-->
+{% endblock %}

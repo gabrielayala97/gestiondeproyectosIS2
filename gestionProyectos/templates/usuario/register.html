@@ -1,6 +1,11 @@
-<title> Registro de Usuario</title>
-<body style="background-color:MediumAquamarine;">
-<h2>Registrar usuario</h2>
+{% extends 'base/base.html' %}
+
+{% block title %}
+Registro de Usuario
+{% endblock %}
+
+{% block body %}
+<h2 align="center">Registrar usuario</h2>
 
 <form method="POST">
     {{ form.as_p }}
@@ -8,8 +13,5 @@
     <button type="submit">Registrar</button>
 </form>
 
-<hr />
-
 <a href="/login">Iniciar sesión</a>
-
-</body>
+{% endblock %}
