@@ -5,7 +5,19 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 
+from .forms import UsuarioForm
+from .models import Usuario
 # Create your views here.
+def crear_usuario(request):
+	if request.method == 'POST':
+		form = UsuarioForm(request.POST)
+		if form.is_valid():
+			form.save()
+		return redirect('/')
+	else:
+		form = UsuarioForm()
+	return render(request, 'usuario/usuario_form.html',{'form': form})
+		
 def welcome(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
@@ -65,3 +77,29 @@ def logout(request):
     do_logout(request)
     # Redireccionamos a la portada
     return redirect('/')
+
+
+def listar_usuario(request):
+    usuario = Usuario.objects.all().order_by('id')
+    contexto = {'usuarios': usuario}
+    return render(request, 'usuario/usuario_list.html', contexto)
+
+def editar_usuario(request, id_usuario):
+    # Recuperamos la instancia de la persona
+    instancia = Usuario.objects.get(id=id_usuario)
+
+    if request.method == "GET":
+        # Actualizamos el formulario con los datos recibidos
+        form = UsuarioForm(instance=instancia)
+    else:
+        form = UsuarioForm(request.POST,instance=instancia)
+        if form.is_valid():
+            form.save()
+        return redirect('/listar_usuarios')
+    return render(request, 'usuario/usuario_form.html',{'form': form})
+
+
+def eliminar_usuario(request,id_usuario):
+    usuario = Usuario.objects.get(id = id_usuario)
+    usuario.delete()
+    return redirect('/listar_usuarios')

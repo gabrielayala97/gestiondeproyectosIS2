@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'apps.usuario',
+	'apps.rol',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'gestion Proyectos',
 		'USER': 'postgres',
-		'PASSWORD': 12345,
+		'PASSWORD': 'postgres',
 		'HOST': 'localhost',
 		'PORT': 5432,
     }

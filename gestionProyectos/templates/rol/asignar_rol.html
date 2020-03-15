@@ -1,0 +1,13 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %} Asignar Rol {% endblock %}
+
+{% block subtitulo %}Asignar Rol{% endblock %}
+
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Guardar</button>
+</form>
+{% endblock %}

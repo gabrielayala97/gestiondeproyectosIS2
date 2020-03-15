@@ -1,0 +1,43 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %} Listar Usuarios {% endblock %}
+
+{% block subtitulo %}Lista de Usuarios{% endblock %}
+
+{% block content  %}
+
+<div id = "contenido">
+        {% if usuarios %}
+            <table> 
+                <thead>
+                    <td>Id</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Email</td>
+                    <td>Username</td>
+                    <td>Password</td>
+                </thead>
+                    <tbody>
+                        {% for usuario in usuarios %}
+                            <tr>
+                                <td>{{ usuario.id }}</td>
+                                <td>{{ usuario.nombre }}</td>
+                                <td>{{ usuario.apellido }}</td>
+                                <td>{{ usuario.email }}</td>
+                                <td>{{ usuario.username }}</td>
+                                <td>{{ usuario.password }}</td>
+                                <td>
+                                    <a class="btn btn-primary"   href="{% url 'editar_usuario' usuario.id %}" >Editar</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" style="background:red"  href="{% url 'eliminar_usuario' usuario.id %}" >Eliminar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+            {% else %}
+                <h1>No existen roles registrados!</h1>
+            {% endif %}
+    </div>
+{% endblock %}
