@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario
+from apps.usuario.models import Usuario
 
 class UsuarioForm (forms.ModelForm):
 	class Meta:
@@ -9,6 +9,7 @@ class UsuarioForm (forms.ModelForm):
 			'nombre', 
 			'apellido',
 			'email',
+			'username',
 			'password',
 		]
 		
@@ -16,6 +17,7 @@ class UsuarioForm (forms.ModelForm):
 			'nombre': 'Nombre', 
 			'apellido':'Apellido',
 			'email':'Correo Electronico',
+			'username': 'Username',
 			'password': 'Contraseña',
 		}
 		
@@ -23,5 +25,6 @@ class UsuarioForm (forms.ModelForm):
 			'nombre': forms.TextInput(attrs={'class':'form-control'}), 
 			'apellido': forms.TextInput(attrs={'class':'form-control'}),
 			'email': forms.TextInput(attrs={'class':'form-control'}),
+			'username': forms.TextInput(attrs={'class':'form-control'}),
 			'password': forms.TextInput(attrs={'class':'form-control'}),
 		}

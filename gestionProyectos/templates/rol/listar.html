@@ -9,10 +9,8 @@
 		{% if Roles %}
 			<table>	
 				<thead>
-					<th>Id </th> 
-					<th>Roles </th>
-					<th>Acciones </th>
-					
+					<th>Id</th> 
+					<th>Roles</th>
 				</thead>
 					<tbody>
 						{% for rol in Roles %}
@@ -20,17 +18,19 @@
 								<td>{{rol.id}}</td>
 								<td>{{rol.nombre_rol}}</td>
 								<td>
-									<a class="btn btn-primary"   href="{% url 'editar_rol' rol.id %}" >Editar</a>
-								</td>
-								<td>
-									<a class="btn btn-primary" style="background:red"  href="{% url 'eliminar_rol' rol.id %}" >Eliminar</a>
-								</td>
-							</tr>
-						{% endfor %}   
-					</tbody>
-			</table>							
-			{% else %}
-				<h1>No existen roles registrados!</h1>
-			{% endif %}
-	</div>
+                                    <a class="btn btn-primary"   href="{% url 'editar_rol' rol.id %}" >Editar</a>
+                                 </td>
+                                <td>
+                                    <a class="btn btn-primary" style="background:red"  href="{% url 'editar_rol' rol.id %}" >Eliminar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+            {% else %}
+                <h1>No existen roles registrados!</h1>
+            {% endif %}
+    </div>
 {% endblock %}
+
+

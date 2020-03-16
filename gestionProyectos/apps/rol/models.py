@@ -3,11 +3,13 @@ from apps.usuario.models import Usuario
 
 # Create your models here.
 class Rol(models.Model):
-	nombre_rol = models.CharField(max_length=50)
-	def __str__ (self):
-		return '{}'.format(self.nombre_rol)	
+	nombre_rol= models.CharField(max_length=50)
+	#permiso= models.CharField(max_length=50)
 
+	def __str__ (self):
+			return '{}'.format(self.nombre_rol , """self.permiso""")
 	
 class Usuario_Posee_Rol(models.Model):
 	usuario = models.ForeignKey(Usuario, null=True, blank=True, on_delete=models.CASCADE)
 	rol = models.ForeignKey(Rol, null=True, blank=True, on_delete=models.CASCADE)
+

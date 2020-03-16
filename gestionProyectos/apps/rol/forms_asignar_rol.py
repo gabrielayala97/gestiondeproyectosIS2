@@ -1,5 +1,6 @@
 from django import forms
-from .models import Usuario_Posee_Rol
+from apps.rol.models import Usuario_Posee_Rol
+
 
 class UsuarioRolForm (forms.ModelForm):
 	class Meta:

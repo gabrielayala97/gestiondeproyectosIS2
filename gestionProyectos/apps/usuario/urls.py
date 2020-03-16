@@ -1,6 +1,6 @@
 
 from django.urls import path
-import views
+from apps.usuario import views
 
 urlpatterns = [
 	path('welcome', views.welcome),

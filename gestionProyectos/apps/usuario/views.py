@@ -5,8 +5,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 
-from .forms import UsuarioForm
-from .models import Usuario
+from apps.usuario.forms import UsuarioForm
+from apps.usuario.models import Usuario
 # Create your views here.
 def crear_usuario(request):
 	if request.method == 'POST':
@@ -103,3 +103,4 @@ def eliminar_usuario(request,id_usuario):
     usuario = Usuario.objects.get(id = id_usuario)
     usuario.delete()
     return redirect('/listar_usuarios')
+
