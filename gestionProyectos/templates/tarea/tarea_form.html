@@ -1,0 +1,15 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %} Registrar Tarea {% endblock %}
+
+{% block subtitulo %}Registrar Tarea{% endblock %}
+
+{% block content %}
+<div id="contenido">
+    <form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Guardar</button>
+	</form>
+</div>
+{% endblock %}

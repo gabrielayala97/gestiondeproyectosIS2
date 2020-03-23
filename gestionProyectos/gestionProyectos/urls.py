@@ -18,20 +18,21 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from apps.usuario import views
-from apps.proyecto.views import registrar_proyecto, listar_proyecto
 from apps.rol.views import registrar_rol, editar_rol, listar_rol, eliminar_rol, asignar_rol
+from apps.proyecto.views import registrar_proyecto, editar_proyecto, listar_proyecto, eliminar_proyecto
+from apps.tarea.views import registrar_tarea, listar_tarea
 
 urlpatterns = [
-    path('', views.welcome),
+	path('', views.welcome),
     # Usuarios
-    path('login/', views.login),
-    path('logout/',views.logout),
-    path('registrar_usuario/',views.crear_usuario),
+	path('login/', views.login),
+	path('logout/',views.logout),
+	path('registrar_usuario/',views.crear_usuario),
     path('listar_usuarios/', views.listar_usuario),
     path('editar_usuario/<id_usuario>/', views.editar_usuario,name='editar_usuario'),
     path('eliminar_usuario/<id_usuario>/', views.eliminar_usuario,name='eliminar_usuario'),
     # Roles
-    path('registrar_rol/', registrar_rol),
+	path('registrar_rol/', registrar_rol),
     path('listar_rol/', listar_rol),
     path('editar_rol/<id_rol>/', editar_rol, name='editar_rol'),
     path('eliminar_rol/<id_rol>/', eliminar_rol, name='eliminar_rol'),
@@ -41,5 +42,8 @@ urlpatterns = [
     path('listar_proyecto/', listar_proyecto),
     path('editar_proyecto/<id_proyecto>/', editar_proyecto, name='editar_proyecto'),
     path('eliminar_proyecto/<id_proyecto>/', eliminar_proyecto, name='eliminar_proyecto'),
+    # Tareas
+    path('registrar_tarea/', registrar_tarea),
+    path('listar_tarea/', listar_tarea),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
