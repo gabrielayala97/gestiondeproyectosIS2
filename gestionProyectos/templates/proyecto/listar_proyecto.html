@@ -1,0 +1,36 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %} Listar proyecto {% endblock %}
+
+{% block subtitulo %}Lista de proyectos{% endblock %}
+
+{% block content  %}
+	<div id = "contenido">
+		{% if Proyectos %}
+			<table>	
+				<thead>
+					<th>Id</th> 
+					<th>Proyecto</th>
+				</thead>
+					<tbody>
+						{% for proyecto in Proyectos %}
+							<tr>
+								<td>{{proyecto.id}}</td>
+								<td>{{proyecto.nombre_proyecto}}</td>
+								<td>
+                                    <a class="btn btn-primary"   href="{% url 'editar_proyecto' proyecto.id %}" >Editar</a>
+                                 </td>
+                                <td>
+                                    <a class="btn btn-primary" style="background:red"  href="{% url 'eliminar_proyecto' proyecto.id %}" >Eliminar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+            {% else %}
+                <h1>No existen proyectos registrados!</h1>
+            {% endif %}
+    </div>
+{% endblock %}
+
+
