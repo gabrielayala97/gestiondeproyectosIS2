@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from apps.usuario import views
 from apps.rol.views import registrar_rol, editar_rol, listar_rol, eliminar_rol, asignar_rol
 from apps.proyecto.views import registrar_proyecto, editar_proyecto, listar_proyecto, eliminar_proyecto
-from apps.tarea.views import registrar_tarea, listar_tarea
+from apps.tarea.views import registrar_tarea, listar_tarea, editar_tarea, eliminar_tarea
 
 urlpatterns = [
 	path('', views.welcome),
@@ -45,5 +45,8 @@ urlpatterns = [
     # Tareas
     path('registrar_tarea/', registrar_tarea),
     path('listar_tarea/', listar_tarea),
-    path('admin/', admin.site.urls),
+    path('editar_tarea/<id_tarea>/', editar_tarea, name='editar_tarea'),
+    path('eliminar_tarea/<id_tarea>/', eliminar_tarea, name='eliminar_tarea'),
+	
+	path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
