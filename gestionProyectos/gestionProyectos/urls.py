@@ -39,7 +39,7 @@ urlpatterns = [
     # Proyectos
     path('registrar_proyecto/', registrar_proyecto),
     path('listar_proyecto/', listar_proyecto),
-    #path('editar_proyecto/<id_proyecto>/', editar_proyecto, name='editar_proyecto'),
-    #path('eliminar_proyecto/<id_proyecto>/', eliminar_proyecto, name='eliminar_proyecto'),
+    path('editar_proyecto/<id_proyecto>/', editar_proyecto, name='editar_proyecto'),
+    path('eliminar_proyecto/<id_proyecto>/', eliminar_proyecto, name='eliminar_proyecto'),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
