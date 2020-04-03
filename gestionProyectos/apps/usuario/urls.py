@@ -3,9 +3,9 @@ from django.urls import path
 from apps.usuario import views
 
 urlpatterns = [
-	path('welcome', views.welcome),
-	path('register', views.register),
-	path('login',views.login),
+	path('', views.welcome),
+	#path('register', views.register),
+	path('login/',views.login),
 	path('logout/',views.logout),
 	path('registrar_usuario/',views.crear_usuario),
 	path('listar_usuarios/', views.listar_usuario),

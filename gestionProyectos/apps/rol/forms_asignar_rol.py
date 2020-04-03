@@ -1,23 +1,24 @@
 from django import forms
-from apps.rol.models import Usuario_Posee_Rol
+from apps.usuario.models import Usuario 
+from apps.rol.models import Rol
 
 
 class UsuarioRolForm (forms.ModelForm):
 	class Meta:
-		model = Usuario_Posee_Rol
+		model = Usuario
 		
 		fields = [
-			'usuario',
+			#'nombre',
 			'rol',
 		]
 		
 		labels = {
-			'usuario': 'Usuario',
-			'rol':'Rol',
+			#'nombre': 'Usuario.nombre',
+			'rol':'Rol.nombre_rol',
 		}
 		
 		widgets = {
-			'usuario': forms.Select(),
+			#'usuario': forms.Select(),
 			'rol': forms.Select(attrs={'class':'form-control'}), 
 			#forms.CheckboxSelectMultiple(attrs={'class':'form-control'}),
 		}

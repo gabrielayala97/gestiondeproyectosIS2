@@ -15,17 +15,15 @@
                     <td>Apellido</td>
                     <td>Email</td>
                     <td>Username</td>
-                    <td>Password</td>
                 </thead>
                     <tbody>
                         {% for usuario in usuarios %}
                             <tr>
                                 <td>{{ usuario.id }}</td>
-                                <td>{{ usuario.nombre }}</td>
-                                <td>{{ usuario.apellido }}</td>
+                                <td>{{ usuario.first_name }}</td>
+                                <td>{{ usuario.last_name }}</td>
                                 <td>{{ usuario.email }}</td>
                                 <td>{{ usuario.username }}</td>
-                                <td>{{ usuario.password }}</td>
                                 <td>
                                     <a class="btn btn-primary"   href="{% url 'editar_usuario' usuario.id %}" >Editar</a>
                                 </td>

@@ -1,18 +1,23 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.contrib import admin
+#from django.db.models.signals import post_save
+#from django.dispatch import receiver
+from apps.rol.models import Rol
 
-#from apps.rol.models import Rol
 
-# Create your models here.
+class Usuario(AbstractUser):
+    #usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    rol = models.ForeignKey(Rol,null=True, blank=True, on_delete=models.CASCADE)
 
-class Usuario(models.Model):
-	nombre = models.CharField(max_length=50)
-	apellido = models.CharField(max_length=50)
-	email = models.EmailField(max_length=50)
-	username = models.CharField(max_length=50)
-	password = models.CharField(max_length=50)
+@admin.register(Usuario)
+class UsuarioAdmin(admin.ModelAdmin):
+    pass
+""""@receiver(post_save, sender=User)
+def crear_usuario_perfil(sender, instance, created, **kwargs):
+    if created:
+        Usuario.objects.create(usuario=instance)
 
-	def __str__ (self):
-			return '{}'.format(self.nombre)
-#	roles = models.ForeignKey(Rol, null=True, blank=True, on_delete=models.CASCADE)
-	#def __str__ (self):
-	#	return self.nombre+self.apellido+self.email+self.password
+@receiver(post_save, sender=User)
+def guardar_usuario_perfil(sender, instance, **kwargs):
+    instance.usuario.save()"""

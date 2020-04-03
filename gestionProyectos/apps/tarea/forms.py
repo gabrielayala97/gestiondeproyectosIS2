@@ -25,8 +25,8 @@ class TareaForm (forms.ModelForm):
 		
 		widgets = {
 			'version': forms.TextInput(attrs={'class':'form-control'}),
-			'prioridad': forms.TextInput(attrs={'class':'form-control'}),
-			'estado': forms.TextInput(attrs={'class':'form-control'}),
+			'prioridad': forms.Select(attrs={'class':'form-control'}),
+			'estado': forms.Select(attrs={'class':'form-control'}),
 			'descripcion': forms.TextInput(attrs={'class':'form-control'}),
 			'observacion': forms.TextInput(attrs={'class':'form-control'}),
 			'id_tarea_padre': forms.TextInput(attrs={'class':'form-control'}),

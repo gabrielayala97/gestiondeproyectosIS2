@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from .forms_rol import RolForm
 from .models import Rol
-from apps.rol.forms_asignar_rol import UsuarioRolForm
+#from apps.rol.forms_asignar_rol import UsuarioRolForm
 
 # Create your views here.
 def registrar_rol(request):
@@ -38,7 +38,7 @@ def eliminar_rol(request,id_rol):
     rol.delete()
     return redirect('/listar_rol')
 
-def asignar_rol(request):
+"""def asignar_rol(request):
     if request.method == 'POST':
         form = UsuarioRolForm(request.POST)
         if form.is_valid():
@@ -46,6 +46,6 @@ def asignar_rol(request):
         return redirect('/')
     else:
         form = UsuarioRolForm()
-    return render(request, 'rol/asignar_rol.html',{'form': form})
+    return render(request, 'rol/asignar_rol.html',{'form': form})"""
 
 

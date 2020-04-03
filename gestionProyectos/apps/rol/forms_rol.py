@@ -10,15 +10,15 @@ class RolForm (forms.ModelForm):
 		
 		fields = [
 			'nombre_rol',
-			#'permiso',
+			'permiso',
 		]
 		
 		labels = {
 			'nombre_rol': 'Nombre del Rol',
-			#'permiso': 'Nombre del permiso',
+			'permiso': 'Nombre del permiso',
 		}
 		
 		widgets = {
 			'nombre_rol': forms.TextInput(attrs={'class':'form-control'}),
-			#'permiso': forms.Select(choise=CHOISES),
+			'permiso': forms.Select(attrs={'class':'form-control'}),
 		}

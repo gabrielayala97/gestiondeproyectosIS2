@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'apps.usuario',
-	'apps.rol',
     'apps.proyecto',
     'apps.tarea',
+	'apps.rol',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +71,7 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'usuario.Usuario'
 WSGI_APPLICATION = 'gestionProyectos.wsgi.application'
 
 
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'gestionProyectos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'gestion Proyectos',
+        'NAME': 'prueba',
 		'USER': 'postgres',
-		'PASSWORD': 12345,
+		'PASSWORD': 'postgres',
 		'HOST': 'localhost',
 		'PORT': 5432,
     }
@@ -110,8 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
+#en-us
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-AR'
 
 TIME_ZONE = 'UTC'
 

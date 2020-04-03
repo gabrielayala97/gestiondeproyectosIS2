@@ -17,6 +17,7 @@
 							<tr>
 								<td>{{rol.id}}</td>
 								<td>{{rol.nombre_rol}}</td>
+								<td>{{rol.permiso.nombre_permiso}}</td>
 								<td>
                                     <a class="btn btn-primary"   href="{% url 'editar_rol' rol.id %}" >Editar</a>
                                  </td>
@@ -32,3 +33,5 @@
             {% endif %}
     </div>
 {% endblock %}
+
+

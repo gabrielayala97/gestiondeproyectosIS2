@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,6 +50,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
       <!-- Heading -->
+      {%  if user.rol.permiso == 'desarrollo' or user.is_superuser%}
       <div class="sidebar-heading">
         Desarrollo
       </div>
@@ -69,7 +69,6 @@
           </div><!---->
         </div>
       </li>
-		
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTarea" aria-expanded="true" aria-controls="collapseTwo">
@@ -84,13 +83,13 @@
           </div><!---->
         </div>
       </li>
-
-
+      {% endif %}
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-	  
+	        
       <!-- Heading -->
+      {%  if user.rol.permiso == 'configuracion' or user.is_superuser%}
       <div class="sidebar-heading">
         Configuracion
       </div>
@@ -109,8 +108,7 @@
           </div> 
         </div>
       </li>
-	  
-      <!-- Nav Item - Charts
+       <!--Nav Item - Charts
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
@@ -123,11 +121,12 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
       </li> -->
-      
+      {% endif %}
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Heading -->
+      {%  if user.rol.permiso == 'administracion' or user.is_superuser %}
       <div class="sidebar-heading">
         Administracion
       </div>
@@ -155,7 +154,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <!--<h6 class="collapse-header">Custom Components:</h6>-->
             <a class="collapse-item" href="/registrar_rol"> Crear Rol</a>
-			     <a class="collapse-item" href="/asignar_rol">Asignar Rol</a>
             <a class="collapse-item" href="/listar_rol">Listar Roles</a>
           </div><!---->
         </div>
@@ -167,7 +165,7 @@
           <span>Sistema</span>
         </a>
       </li>
-	  
+      {% endif %}
 	  <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 	  
@@ -175,7 +173,6 @@
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -337,7 +334,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{request.user.username}}</b></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{user.username}}</b></span>
                 <img class="img-profile rounded-circle" src="static/img/17004.png">
               </a>
               <!-- Dropdown - User Information--> 
