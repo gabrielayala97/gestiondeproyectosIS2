@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 
 from .forms_rol import RolForm
 from .models import Rol
+from django.contrib.auth.decorators import login_required
 #from apps.rol.forms_asignar_rol import UsuarioRolForm
 
 # Create your views here.
+@login_required(login_url='/login')
 def registrar_rol(request):
 	if request.method == 'POST':
 		form = RolForm(request.POST)
@@ -15,10 +17,12 @@ def registrar_rol(request):
 		form = RolForm()
 	return render(request, 'rol/rol_form.html',{'form': form})
 
+@login_required(login_url='/login')
 def listar_rol(request):
 	rol = Rol.objects.all().order_by('id')
 	return render(request, 'rol/listar.html',{'Roles': rol})
-	
+
+@login_required(login_url='/login')	
 def editar_rol(request, id_rol):
     # Recuperamos la instancia del rol
     instancia = Rol.objects.get(id=id_rol)
@@ -32,7 +36,8 @@ def editar_rol(request, id_rol):
             form.save()
         return redirect('/listar_rol')
     return render(request, 'rol/rol_form.html',{'form': form})
-
+    
+@login_required(login_url='/login')
 def eliminar_rol(request,id_rol):
     rol = Rol.objects.get(id = id_rol)
     rol.delete()

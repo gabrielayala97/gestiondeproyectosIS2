@@ -12,6 +12,7 @@ class TareaForm (forms.ModelForm):
 			'descripcion',
 			'observacion',
 			'id_tarea_padre',
+			'proyecto',
 		]
 		
 		labels = {
@@ -21,6 +22,7 @@ class TareaForm (forms.ModelForm):
 			'descripcion':'Descripcion',
 			'observacion': 'Observacion',
 			'id_tarea_padre': 'ID de Tarea Padre',
+			'proyecto': 'Proyecto',
 		}
 		
 		widgets = {
@@ -29,5 +31,6 @@ class TareaForm (forms.ModelForm):
 			'estado': forms.Select(attrs={'class':'form-control'}),
 			'descripcion': forms.TextInput(attrs={'class':'form-control'}),
 			'observacion': forms.TextInput(attrs={'class':'form-control'}),
-			'id_tarea_padre': forms.TextInput(attrs={'class':'form-control'}),
+			'id_tarea_padre': forms.Select(attrs={'class':'form-control'}),
+			'proyecto': forms.Select(attrs={'class':'form-control'}),
 		}

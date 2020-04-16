@@ -4,7 +4,7 @@
 
 {% block subtitulo %}Lista de proyectos{% endblock %}
 
-{% block content  %}
+{% block content %}
 	<div id = "contenido">
 		{% if Proyectos %}
 			<table>	
@@ -22,6 +22,9 @@
                                  </td>
                                 <td>
                                     <a class="btn btn-primary" style="background:red"  href="{% url 'eliminar_proyecto' proyecto.id %}" >Eliminar</a>
+                                </td>
+								<td>
+                                    <a class="btn btn-primary" style="background:LawnGreen" href="{% url 'listar_tarea_proyecto' proyecto.id %}">Ver Proyecto</a>
                                 </td>
                             </tr>
                         {% endfor %}

@@ -4,6 +4,7 @@ from django.contrib.auth import logout as do_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 #from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from apps.usuario.forms import UsuarioForm, UsuarioEditForm
 from apps.usuario.models import Usuario
@@ -11,6 +12,7 @@ from apps.rol.models import Rol
 #from django.contrib.auth import get_user_model
 
 # Create your views here.
+@login_required(login_url='/login')
 def crear_usuario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -27,13 +29,14 @@ def crear_usuario(request):
         form.fields['password1'].help_text = None
         form.fields['password2'].help_text = None
     return render(request, 'usuario/usuario_form.html',{'form': form})
-		
+
+@login_required(login_url='/login')     
 def welcome(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
         return render(request, "usuario/welcome.html")
     # En otro caso redireccionamos al login
-    return redirect('/login.html')
+    return redirect('/login')
 
 def login(request):
     # Creamos el formulario de autenticación vacío
@@ -82,19 +85,20 @@ def login(request):
     # Si llegamos al final renderizamos el formulario
     return render(request, "usuario/register.html", {'form': form})
 """   
-
+@login_required(login_url='/login')
 def logout(request):
-	# Finalizamos la sesión
+    # Finalizamos la sesión
     do_logout(request)
     # Redireccionamos a la portada
-    return redirect('/')
+    return redirect('/login')
 
-
+@login_required(login_url='/login')
 def listar_usuario(request):
     usuario = Usuario.objects.all().order_by('id')
     contexto = {'usuarios': usuario}
     return render(request, 'usuario/usuario_list.html', contexto)
 
+@login_required(login_url='/login')
 def editar_usuario(request, id_usuario):
     # Recuperamos la instancia de la persona
     instancia = Usuario.objects.get(id=id_usuario)
@@ -111,7 +115,7 @@ def editar_usuario(request, id_usuario):
         return redirect('/listar_usuarios')
     return render(request, 'usuario/usuario_form.html',{'form': form})
 
-
+@login_required(login_url='/login')
 def eliminar_usuario(request,id_usuario):
     usuario = Usuario.objects.get(id = id_usuario)
     usuario.delete()

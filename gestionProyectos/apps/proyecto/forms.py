@@ -6,13 +6,16 @@ class ProyectoForm (forms.ModelForm):
 		model = Proyecto
 
 		fields = [
-			'nombre_proyecto', 			
+			'nombre_proyecto',
+			'usuarios',
 		]
 		
 		labels = {
-			'nombre_proyecto': 'Nombre del Proyecto'
+			'nombre_proyecto': 'Nombre del Proyecto',
+			'usuarios': 'Usuarios',
 		}
 		
 		widgets = {
 			'nombre_proyecto': forms.TextInput(attrs={'class':'form-control'}),
+			'usuarios': forms.CheckboxSelectMultiple(),
 		}

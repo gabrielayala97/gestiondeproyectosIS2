@@ -28,9 +28,8 @@
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -162,7 +161,7 @@
       </li>
 	  
 	  <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSistema" aria-expanded="true" aria-controls="collapseTwo">
           <!--<i class="fas fa-fw fa-cog"></i>-->
           <span>Sistema</span>
         </a>
@@ -378,21 +377,10 @@
           <!-- Content Row -->
           <div class="row">
 			<div class="col-xl-3 col-md-6 mb-4">
-				<div class="card border-left-info shadow h-100 py-2">
+				<div class="card border-left-info shadow h-100 py-2" style="width:800px; height:300px;">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
-								<!--<div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-								<div class="row no-gutters align-items-center">
-									<div class="col-auto">
-										<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-									</div>
-									<div class="col">
-										<div class="progress progress-sm mr-2">
-											<div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div>-->
 								{% block content %}
 								{% endblock %}
 							</div>
@@ -456,7 +444,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="/login">Logout</a>
+          <a class="btn btn-primary" href="/logout">Logout</a>
         </div>
       </div>
     </div>
