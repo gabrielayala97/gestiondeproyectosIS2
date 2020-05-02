@@ -25,3 +25,28 @@ def agregar_tareas(request):
     else:
         proyecto = Proyecto.objects.filter(usuarios = request.user.id)
         return render(request, 'linea_base/seleccion_proyecto.html',{'Proyectos': proyecto})
+@login_required(login_url='/login')
+def seleccion_linea_base(request, id_proyecto):
+	tareas = Tarea.objects.all()
+	lb = LineaBase.objects.all()
+	auxiliar=list()
+	lineasbase=list()
+	proyecto = Proyecto.objects.get(id = id_proyecto)
+	#Almacena los id de las lineas base que pertenecen a otros proyectos
+	for t in tareas:
+		if (t.linea_base is not None and t.proyecto != proyecto):
+			auxiliar.append(t.linea_base.id)
+	cantidad = len(auxiliar)
+	if cantidad > 0:
+		#Elimina los duplicados
+		lista_nueva = list()
+		for i in auxiliar:
+			if i not in lista_nueva:
+				lista_nueva.append(i)
+		#agrega las lineas bases que no corresponden a otros proyectos
+		for l in lb:
+			if l.id not in lista_nueva:
+					lineasbase.append(l)
+		return render(request, 'linea_base/seleccion_linea_base.html',{'LBs': lineasbase,'id_proyecto':id_proyecto})
+	else:
+		return render(request, 'linea_base/seleccion_linea_base.html',{'LBs': lb,'id_proyecto':id_proyecto})
