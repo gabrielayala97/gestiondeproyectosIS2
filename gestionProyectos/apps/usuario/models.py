@@ -8,7 +8,7 @@ from apps.rol.models import Rol
 
 class Usuario(AbstractUser):
     #usuario = models.OneToOneField(User, on_delete=models.CASCADE)
-    rol = models.OneToOneField(Rol,null=True, blank=True, on_delete=models.CASCADE)
+    rol = models.ForeignKey(Rol,null=True, blank=True, on_delete=models.CASCADE)
 
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
