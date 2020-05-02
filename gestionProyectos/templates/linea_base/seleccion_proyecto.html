@@ -1,0 +1,33 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %} Seleccion de proyecto {% endblock %}
+
+{% block subtitulo %}Selecciona el proyecto{% endblock %}
+
+{% block content %}
+	<div id = "contenido">
+		{% if Proyectos %}
+			<table>	
+				<thead>
+					<th>Id</th> 
+					<th>Proyecto</th>
+				</thead>
+					<tbody>
+						{% for proyecto in Proyectos %}
+							<tr>
+								<td>{{proyecto.id}}</td>
+								<td>{{proyecto.nombre_proyecto}}</td>
+								<td>
+                                    <a class="btn btn-primary"   href="{% url 'seleccion_linea_base' proyecto.id %}" >OK</a>
+                                 </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+            {% else %}
+                <h1>No existen proyectos registrados!</h1>
+            {% endif %}
+    </div>
+{% endblock %}
+
+

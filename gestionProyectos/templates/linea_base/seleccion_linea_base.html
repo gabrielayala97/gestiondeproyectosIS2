@@ -1,0 +1,35 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %} Seleccion de LB {% endblock %}
+
+{% block subtitulo %}Selecciona la LB{% endblock %}
+
+{% block content %}
+	<div id = "contenido">
+		{% if LBs %}
+			<table>	
+				<thead>
+					<th>Id</th> 
+					<th>Descripción</th>
+				</thead>
+					<tbody>
+						{% for lb in LBs %}
+							<tr>
+								<td>{{lb.id}}</td>
+								<td>{{lb.linea_base}}</td>
+								<td>
+                                    {% if id_proyecto %}
+                                        <a class="btn btn-primary"   href="{% url 'seleccion_tarea' lb id_proyecto %}" >OK</a>
+                                    {% endif %}
+                                 </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+            {% else %}
+                <h1>No existen líneas bases disponibles!</h1>
+            {% endif %}
+	</div>
+{% endblock %}
+
+

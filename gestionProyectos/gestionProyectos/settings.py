@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.proyecto',
     'apps.tarea',
 	'apps.rol',
+    'apps.linea_base',
 ]
 
 MIDDLEWARE = [
@@ -81,9 +82,9 @@ WSGI_APPLICATION = 'gestionProyectos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'proyecto_bd',
+        'NAME': 'prueba',
 		'USER': 'postgres',
-		'PASSWORD': 12345,
+		'PASSWORD': '12345',
 		'HOST': 'localhost',
 		'PORT': 5432,
     }

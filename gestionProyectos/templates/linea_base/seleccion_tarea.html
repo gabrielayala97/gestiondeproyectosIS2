@@ -1,0 +1,60 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %} Seleccion de tareas {% endblock %}
+
+{% block subtitulo %}Selecciona la tarea{% endblock %}
+
+{% block content  %}
+{% if messages %}
+<ul class="messages">
+	{% for message in messages %}
+		<a {% if message.tags %} class="{{ message.tags }}"{% endif %}><h2>{{ message }}</h2></a>
+		<button onclick="location.href='/agregar_tareas'">Volver</button>
+	{% endfor %}
+</ul>    
+{% else %}
+	<div id = "contenido">
+		<hr class="sidebar-divider">
+		{% if Tareas %}
+			<table>	
+				<thead>
+					<th>Id</th> 
+					<th>Version</th>
+					<th>Prioridad</th>
+					<th>Estado</th>
+					<th>Descripcion</th>
+					<th>Observacion</th>
+					<th>ID Padre</th>
+					<th>Proyecto</th>
+					<th>Linea Base</th>
+				</thead>
+					<tbody>
+						{% for tarea in Tareas %}
+							<tr>
+								<td>{{tarea.id}}</td>
+								<td>{{tarea.version}}</td>
+								<td>{{tarea.prioridad}}</td>
+								<td>{{tarea.estado}}</td>
+								<td>{{tarea.descripcion}}</td>
+								<td>{{tarea.observacion}}</td>
+								<td>{{tarea.id_tarea_padre}}</td>
+								<td>{{tarea.proyecto}}</td>
+								<td>{{tarea.linea_base}}
+								<td>
+									{% if LB %}
+										<a class="btn btn-primary"   href="{% url 'actualizar_tarea' tarea.id LB %}" >Agregar</a>
+									{% endif %}
+								</td>
+								<td>
+									<hr class="sidebar-divider">
+								</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+            {% else %}
+                <h1>No existen tareas registradas!</h1>
+            {% endif %}
+	</div>
+{% endif %}
+{% endblock %}

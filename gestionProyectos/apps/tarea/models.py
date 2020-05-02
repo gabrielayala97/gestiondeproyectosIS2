@@ -1,5 +1,6 @@
 from django.db import models
 from apps.proyecto.models import Proyecto
+from apps.linea_base.models import LineaBase
 
 # Create your models here.
 class Tarea(models.Model):
@@ -22,6 +23,7 @@ class Tarea(models.Model):
         ('Finalizado', 'Finalizado'),
     )
 	estado = models.CharField(max_length=15, choices=ESTADOS_TAREA)	
+	linea_base = models.ForeignKey(LineaBase, null=True, blank=True, on_delete=models.SET_NULL)
 
 	def __str__ (self):
-			return '{}'.format(self.version)
+			return '{}'.format(self.id)

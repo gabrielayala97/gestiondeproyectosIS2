@@ -23,8 +23,11 @@
                                 <td>
                                     <a class="btn btn-primary" style="background:red"  href="{% url 'eliminar_proyecto' proyecto.id %}" >Eliminar</a>
                                 </td>
+                                <td>
+                                    <a class="btn btn-primary" style="background:LawnGreen" href="{% url 'registrar_tarea' proyecto.id %}">Crear tarea</a>
+                                </td>
 								<td>
-                                    <a class="btn btn-primary" style="background:LawnGreen" href="{% url 'listar_tarea_proyecto' proyecto.id %}">Ver Proyecto</a>
+                                    <a class="btn btn-primary" style="background:LawnGreen" href="{% url 'listar_tarea' proyecto.id %}">Listar tareas</a>
                                 </td>
                             </tr>
                         {% endfor %}
