@@ -25,6 +25,7 @@ def agregar_tareas(request):
     else:
         proyecto = Proyecto.objects.filter(usuarios = request.user.id)
         return render(request, 'linea_base/seleccion_proyecto.html',{'Proyectos': proyecto})
+	
 @login_required(login_url='/login')
 def seleccion_linea_base(request, id_proyecto):
 	tareas = Tarea.objects.all()
@@ -50,3 +51,25 @@ def seleccion_linea_base(request, id_proyecto):
 		return render(request, 'linea_base/seleccion_linea_base.html',{'LBs': lineasbase,'id_proyecto':id_proyecto})
 	else:
 		return render(request, 'linea_base/seleccion_linea_base.html',{'LBs': lb,'id_proyecto':id_proyecto})
+
+@login_required(login_url='/login')
+def seleccion_tarea(request,lb,id_proyecto):
+	tarea = Tarea.objects.filter(proyecto = id_proyecto)
+	auxiliar=list()
+	for t in tarea:
+		if t.linea_base is None:
+			auxiliar.append(t)
+	if len(auxiliar) > 0:
+		return render(request, 'linea_base/seleccion_tarea.html',{'Tareas': auxiliar,'LB':lb})
+	else:
+		messages.error(request, 'Las tareas del proyecto ya se encuentran dentro de una LB!')
+		return render(request, 'linea_base/seleccion_tarea.html')
+		
+@login_required(login_url='/login')
+def actualizar_tarea(request, id_tarea,lb):
+	linea_base = LineaBase.objects.get(linea_base = lb)
+	tarea = Tarea.objects.get(id = id_tarea)
+	tarea.linea_base = linea_base
+	tarea.save()
+	return redirect('/seleccion_tarea/'+str(lb)+'/'+str(tarea.proyecto.id))
+
