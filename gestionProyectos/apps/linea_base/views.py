@@ -54,11 +54,13 @@ def seleccion_linea_base(request, id_proyecto):
 
 @login_required(login_url='/login')
 def seleccion_tarea(request,lb,id_proyecto):
+	#Filtra las tareas que pertenecen a un proyecto
 	tarea = Tarea.objects.filter(proyecto = id_proyecto)
 	auxiliar=list()
 	for t in tarea:
 		if t.linea_base is None:
 			auxiliar.append(t)
+	#Si existen tareas disponibles se muestra, en caso contrario lanza un mensaje
 	if len(auxiliar) > 0:
 		return render(request, 'linea_base/seleccion_tarea.html',{'Tareas': auxiliar,'LB':lb})
 	else:
