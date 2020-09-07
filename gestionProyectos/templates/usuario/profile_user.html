@@ -1,0 +1,22 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %} Perfil de usuario {% endblock %}
+
+{% block subtitulo %}Perfil de usuario{% endblock %}
+
+{% block content  %}
+
+<div id = "contenido">
+        {% if usuario %}
+            <table> 
+                <thead>
+                    <tr><td>Nombre: {{ usuario.first_name }}</td></tr>
+                    <tr><td>Apellido: {{ usuario.last_name }}</td></tr>
+                    <tr><td>Email: {{ usuario.email }}</td></tr>
+                    <tr><td>Nombre de usuario: {{ usuario.username }}</td></tr>
+                </thead>
+
+            </table>
+            {% endif %}
+    </div>
+{% endblock %}

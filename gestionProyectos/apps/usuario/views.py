@@ -11,7 +11,7 @@ from apps.usuario.models import Usuario
 from apps.rol.models import Rol
 #from django.contrib.auth import get_user_model
 
-# Create your views here.
+# Vistas de creación de usuarios para el sistema
 @login_required(login_url='/login')
 def crear_usuario(request):
     if request.method == 'POST':
@@ -30,6 +30,7 @@ def crear_usuario(request):
         form.fields['password2'].help_text = None
     return render(request, 'usuario/usuario_form.html',{'form': form})
 
+#Vista de bienvenida-dashboard del sistema
 @login_required(login_url='/login')     
 def welcome(request):
     # Si estamos identificados devolvemos la portada
@@ -37,7 +38,8 @@ def welcome(request):
         return render(request, "usuario/welcome.html")
     # En otro caso redireccionamos al login
     return redirect('/login')
-
+    
+#Vista de inicio de sesión para usuarios del sistema
 def login(request):
     # Creamos el formulario de autenticación vacío
     form = AuthenticationForm()
@@ -97,6 +99,12 @@ def listar_usuario(request):
     usuario = Usuario.objects.all().order_by('id')
     contexto = {'usuarios': usuario}
     return render(request, 'usuario/usuario_list.html', contexto)
+
+@login_required(login_url='/login')
+def mostrar_perfil(request,id_usuario):
+    usuario = Usuario.objects.get(id=id_usuario)
+    contexto = {'usuario': usuario}
+    return render(request, 'usuario/profile_user.html', contexto)
 
 @login_required(login_url='/login')
 def editar_usuario(request, id_usuario):
